@@ -1,0 +1,99 @@
+swagger: '2.0'
+info:
+  title: DocBleach API
+  description: Sanatize your documents in the cloud using DocBleach's API
+  version: "1.0.0"
+
+host: docbleach.xyz
+schemes:
+  - https
+basePath: /v1
+produces:
+  - application/json
+
+paths:
+  /tasks:
+    post:
+      summary: Create Sanitize Task
+      description: |
+        This endpoint creates a conversion task. In exchange of your
+        file, you will get a {task_id}, required to follow the task status.
+        DocBleach will determine what bleach should be used on your file
+      consumes:
+      - multipart/form-data
+      parameters:
+        - name: file
+          in: formData
+          description: The file to be sanitized
+          required: true
+          type: file
+      responses:
+        202:
+          description: Task has been created
+          schema:
+            type: object
+            properties:
+              task_id:
+                type: string
+                description: Your Task ID
+        default:
+          description: Unexpected error
+
+  /tasks/{task_id}:
+    get:
+      summary: Task Status
+      description: |
+        The Task Status endpoint
+      parameters:
+        - name: task_id
+          in: path
+          description: Your Task ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: Status of the requested task
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Task'
+        default:
+          description: Unexpected error
+
+definitions:
+  Task:
+    type: object
+    required:
+    - result
+    - status
+    properties:
+      status:
+        type: string
+        description: State of the task, the only two useful being PENDING
+                     and SUCCESS.
+        enum:
+        - PENDING
+        - RECEIVED
+        - STARTED
+        - SUCCESS
+        - FAILURE
+        - REVOKED
+        - RETRY
+      result:
+        type: object
+        description: |
+          null unless status is SUCCESS.
+          Contains the useful data linked to the sanitization process.
+        required:
+        - output
+        - exit_code
+        properties:
+          final_file:
+            type: string
+            description: Direct download link to the sanitized file.
+          output:
+            type: string
+            description: DocBleach's process output.
+          exit_code:
+            type: integer
+            description: DocBleach's exit code, 0 in case no errors occured.

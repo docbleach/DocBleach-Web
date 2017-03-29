@@ -1,0 +1,47 @@
+.docbleach_severe {
+    color: darkred;
+    font-weight: 600;
+}
+
+.docbleach_warning {
+    color: red;
+}
+
+.docbleach_info {
+    color: #0091D7;
+}
+
+/* Used by docbleach's drop zone */
+
+.js .inputfile,
+.js #subButton {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: 80%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+}
+
+.inputfile + label {
+    color: #f1e5e6;
+    background-color: #d3394c;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label,
+.inputfile + label:hover {
+    background-color: #722040;
+}

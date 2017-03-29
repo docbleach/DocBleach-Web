@@ -1,0 +1,2 @@
+marathon==0.8.9
+redis==2.10.5

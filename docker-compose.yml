@@ -1,0 +1,38 @@
+version: '2.1'
+
+services:
+  # Redis
+  redis:
+    image: redis
+
+  # Our rest API
+  web:
+    build:
+      context: api
+      dockerfile: Dockerfile
+    image: docbleach/api:latest
+    environment:
+      - CELERY_BROKER=redis://redis/
+      - CELERY_RESULT_BACKEND=redis://redis/
+      - INTERNAL_PLIK_SERVER=${FINAL_PLIK_SERVER:-http://plik:8080}
+    ports:
+      - "${EXTERNAL_PORT:-9000}:5000"
+    tmpfs: /tmp
+
+  # Celery worker, the one you should be scaling using, ie to have 10 instances:
+  # `docker-compose scale worker=10`
+  worker:
+    build:
+      context: worker
+      dockerfile: Dockerfile
+    image: docbleach/worker:latest
+    environment:
+      - CELERY_BROKER=redis://redis/
+      - CELERY_RESULT_BACKEND=redis://redis/
+      - FINAL_PLIK_SERVER=${FINAL_PLIK_SERVER:-https://plik.root.gg}
+    tmpfs: /tmp
+
+  plik:
+    image: rootgg/plik
+    expose:
+      - 8080
