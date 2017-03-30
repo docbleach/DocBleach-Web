@@ -1,10 +1,10 @@
 swagger: '2.0'
 info:
   title: DocBleach API
-  description: Sanatize your documents in the cloud using DocBleach's API
-  version: "1.0.0"
+  description: Sanitize your documents in the cloud using DocBleach's API
+  version: "0.0.1"
 
-host: https://docbleach.xyz
+host: docbleach.xyz
 schemes:
   - https
 basePath: /v1
