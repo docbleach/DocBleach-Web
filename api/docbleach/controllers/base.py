@@ -4,6 +4,7 @@ from ..config import advertise_server
 
 CSP_POLICY = "default-src 'self' https:;" + \
              "style-src 'self' 'unsafe-inline' https:;" + \
+             "img-src 'self' data: https:;" + \
              "frame-ancestors 'none';" + \
              "form-action *;"
 
