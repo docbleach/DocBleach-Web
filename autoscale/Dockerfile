@@ -1,5 +1,4 @@
 FROM python:3.5
-MAINTAINER Guerreiro Maxime <docker@docbleach.xyz>
 
 WORKDIR /app/
 COPY . /app/

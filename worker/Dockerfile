@@ -1,5 +1,4 @@
 FROM openjdk:8-jre-alpine
-MAINTAINER DocBleach <docker@docbleach.xyz>
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 

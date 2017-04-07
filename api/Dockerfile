@@ -1,5 +1,4 @@
 FROM python:3.5-alpine
-MAINTAINER DocBleach <docker@docbleach.xyz>
 
 EXPOSE 5000
 HEALTHCHECK CMD curl --fail http://localhost:5000/ping
