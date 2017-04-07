@@ -6,7 +6,7 @@ HEALTHCHECK CMD curl --fail http://localhost:5000/ping
 ENV INTERNAL_PLIK_SERVER https://plik.root.gg
 
 # We add the Plik binary file
-ADD https://plik.root.gg/clients/linux-amd64/plik /usr/bin/plik
+COPY https://plik.root.gg/clients/linux-amd64/plik /usr/bin/plik
 
 RUN apk add -t build --no-cache --update-cache \
     # Having up to date SSL certificates is always a good thing. :)
@@ -34,7 +34,7 @@ RUN apk add -t build --no-cache --update-cache \
 
 
 # Install the python dependencies
-ADD requirements.txt /app/
+COPY requirements.txt /app/
 WORKDIR /app/
 
 RUN pip3 install --no-cache-dir -r requirements.txt

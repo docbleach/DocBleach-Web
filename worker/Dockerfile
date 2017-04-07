@@ -10,7 +10,7 @@ ENV FINAL_PLIK_SERVER https://plik.root.gg
 ENV DOCBLEACH_JAR https://github.com/docbleach/DocBleach/releases/download/v0.0.1/docbleach.jar
 
 # We add the Plik binary file
-ADD https://plik.root.gg/clients/linux-amd64/plik /usr/bin/plik
+COPY https://plik.root.gg/clients/linux-amd64/plik /usr/bin/plik
 
 RUN apk add --no-cache --update-cache \
     # Having up to date SSL certificates is always a good thing. :)
@@ -41,7 +41,7 @@ RUN apk add --no-cache --update-cache \
     echo 'URL = "https://plik.root.gg"' > /home/worker/.plikrc
 
 # Install the celery dependency
-ADD requirements.txt ${DOCBLEACH_JAR} /app/
+COPY requirements.txt ${DOCBLEACH_JAR} /app/
 
 WORKDIR /app/
 
