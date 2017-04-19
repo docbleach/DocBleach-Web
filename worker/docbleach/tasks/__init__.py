@@ -4,7 +4,7 @@ from subprocess import PIPE, Popen
 
 from celery import Celery
 
-external_plik_server = os.getenv('EXTERNAL_PLIK_SERVER', 'https://plik.root.gg')
+external_plik_server = os.getenv('FINAL_PLIK_SERVER', 'https://plik.root.gg')
 
 cel = Celery(
     'docbleach',
