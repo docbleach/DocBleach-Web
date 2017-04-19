@@ -14,12 +14,14 @@ cel = Celery(
 
 cel.config_from_object('docbleach.celeryconfig')
 
+def get_wget_command(original_uri):
+    return ['wget', '-qO-', original_uri]
 
-def get_docbleach_command(original_uri):
+def get_docbleach_command():
     return ['java',
             '-jar', 'docbleach.jar',
             '-batch',
-            '-in', original_uri,
+            '-in', '-',
             '-out', '-'
             ]
 
@@ -35,15 +37,17 @@ def get_plik_command(original_filename):
 
 @cel.task(name="sanitize")
 def sanitize_task(original_uri, original_filename):
-    time.sleep(5)
-    docbleach_command = get_docbleach_command(original_uri)
+    wget_command = get_wget_command(original_uri)
+    docbleach_command = get_docbleach_command()
     plik_command = get_plik_command(original_filename)
 
-    p1 = Popen(docbleach_command, stdout=PIPE, stderr=PIPE)
+    p0 = Popen(wget_command, stdout=PIPE)
+    p1 = Popen(docbleach_command, stdin=p0.stdout, stdout=PIPE, stderr=PIPE)
     p2 = Popen(plik_command, stdin=p1.stdout, stdout=PIPE)
 
     plik_link, plik_err = p2.communicate()
     _, docbleach_output = p1.communicate()
+    _, _ = p0.communicate()
 
     # We build a "pretty" output to be displayed
     total_output = ""
@@ -69,3 +73,4 @@ def sanitize_task(original_uri, original_filename):
         'exit_code': return_code,
         'output': total_output
     }
+
