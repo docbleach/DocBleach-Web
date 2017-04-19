@@ -20,7 +20,6 @@ def get_wget_command(original_uri):
 def get_docbleach_command():
     return ['java',
             '-jar', 'docbleach.jar',
-            '-batch',
             '-in', '-',
             '-out', '-'
             ]
