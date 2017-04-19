@@ -54,7 +54,7 @@ var docbleach_endpoint = "/v1/";
 
   function convertFile(formData) {
     swal({
-      title: "Uplading file",
+      title: "Uploading file",
       text: "...",
       type: "info",
       allowOutsideClick: false,
