@@ -7,7 +7,7 @@ HEALTHCHECK CMD /usr/bin/celery inspect ping -A docbleach.tasks -d celery@$HOSTN
 ENV FINAL_PLIK_SERVER https://plik.root.gg
 
 # Stored on Plik for now, as we don't yet have the GitHub Link
-ENV DOCBLEACH_JAR https://github.com/docbleach/DocBleach/releases/download/v0.0.6/docbleach.jar
+ENV DOCBLEACH_JAR https://github.com/docbleach/DocBleach/releases/download/v0.0.7/docbleach.jar
 
 # We add the Plik binary file
 ADD https://plik.root.gg/clients/linux-amd64/plik /usr/bin/plik
