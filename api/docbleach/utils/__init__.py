@@ -1,6 +1,8 @@
 import os
-import random
 import string
+from random import SystemRandom
+
+cryptogen = SystemRandom()
 
 
 def secure_uuid():
@@ -14,7 +16,7 @@ def secure_uuid():
 
 
 def id_generator(size=6, chars=string.ascii_letters + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
+    return ''.join(cryptogen.choice(chars) for _ in range(size))
 
 
 def static(*args):
