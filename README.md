@@ -1,9 +1,9 @@
-[DocBleach aaS ~ Sanitize your documents with bleach... as a service][github]
+# DocBleach aaS - Sanitize your documents in the cloud™
  
-DocBleach allows you to sanitize your Word, Excel, PowerPoint, PDF, ... documents. This repository contains the
-DocBleach Web API, packaged as a docker service. Two clicks and you're safe.
+[DocBleach][github] allows you to sanitize your Word, Excel, PowerPoint, PDF, ... documents. This repository contains the
+DocBleach Web API, packaged as a docker service. Two clicks and you'll feel safer.
 
----
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d44e774ed4df461a97e86e96f6b802c9)](https://www.codacy.com/app/DocBleach/DocBleach-Web?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=docbleach/DocBleach-Web&amp;utm_campaign=Badge_Grade)
 
 You have files to sanitize but you can't install Java, may it be because you run on an embedded system or you deploy
 your PHP app on a shared hosting and Java is not available ... This package is the solution to your issues!
