@@ -16,7 +16,7 @@ class UploadHandler(BaseApiHandler):
             raise tornado.web.HTTPError(404)
 
         fileinfo = self.request.files['file']
-        if type(fileinfo) == list:
+        if isinstance(fileinfo, list):
             fileinfo = fileinfo[0]
 
         filename = str(fileinfo['filename'].strip())
