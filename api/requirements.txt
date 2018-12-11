@@ -1,2 +1,2 @@
-celery[redis]==4.0.2
-tornado==4.4.2
+celery[redis]~=4.0.2
+tornado~=4.4
