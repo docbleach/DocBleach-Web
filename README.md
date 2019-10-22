@@ -73,6 +73,15 @@ to hear from you !
 Documentation uses [Swagger][swagger], and thus is rendered client-side using the specifications in
 `api/static/swagger.yaml`.
 
+# How to Sanitize
+
+to start sanitizing your file, click on the "pick a file" button
+![click here](docs/clickhere.png)
+then choose the file you want to sanitize
+![click here](docs/Chooseafile.png)
+Finaly, click "Download the sanitized file" to get your file back
+![click here](docs/downloadyourfile.png)
+
 # Related links
  
  * Contribute: https://github.com/docbleach/DocBleach-Web
