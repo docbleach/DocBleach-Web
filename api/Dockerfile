@@ -1,4 +1,4 @@
-FROM python:3.5-alpine
+FROM python:3.7-alpine
 
 EXPOSE 5000
 HEALTHCHECK CMD curl --fail http://localhost:5000/ping
