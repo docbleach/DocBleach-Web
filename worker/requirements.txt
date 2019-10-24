@@ -1,1 +1,1 @@
-celery[redis]==4.1.1
+celery[redis]==4.3.0
